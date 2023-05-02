@@ -1,21 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 
+import Advice from '../components/Advice'
+
 export default function Home() {
 
   // flex min-h-screen flex-col items-center justify-between p-24 bg-[#1f2631]
 
   return (
-    <main style={ {width: '400px', padding: '0 0 50px 0'} } className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-0 border-black border-solid">
+    <main style={{ width: '400px', padding: '0 0 50px 0' }} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-0 border-black border-solid">
 
       <div className="rounded-lg bg-[#313a49] text-center border-0 border-white border-solid">
-        <h1 className="uppercase text-teal-300 py-5">Advice #123</h1>
 
-        <div className="p-5 text-white font-bold">
-          &quot;A quote from a wise man that is really, really, really, really, long, so it enforces a line-break - Kai&quot;
-        </div>
+        <Advice />
 
-        <div style={ {padding: '20px 0 60px 0'} } className="border-0 border-white border-solid">
+        <div style={{ padding: '20px 0 60px 0' }} className="border-0 border-white border-solid">
           <Image
             src="/images/pattern-divider-desktop.svg"
             alt="---"
