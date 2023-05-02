@@ -12,7 +12,7 @@ export default function Home() {
 
       <div className="rounded-lg bg-[#313a49] text-center border-0 border-white border-solid">
 
-        <Advice />
+        <Advice adviceId="321" message="A quote from a wise man that is really, really, really, really, long, so it enforces a line-break - Kai" />
 
         <div style={{ padding: '20px 0 60px 0' }} className="border-0 border-white border-solid">
           <Image
