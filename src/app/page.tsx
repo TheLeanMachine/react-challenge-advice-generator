@@ -1,7 +1,9 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
 
-import Advice from '../components/Advice'
+import { Advice } from '../components/Advice'
 
 export default function Home() {
 
