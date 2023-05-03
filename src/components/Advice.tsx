@@ -11,18 +11,30 @@ type AdviceState = {
 };
 
 export class Advice extends Component<AdviceProps, AdviceState> {
-    constructor(props: AdviceProps) {
+    constructor(props: AdviceProps) {        
         super(props);
     }
 
-    componentWillMount(): void {
+    /*
+    componentWillMount(): void {        
         this.setState({
             adviceId: this.props.adviceId,
             message: this.props.message
         });
+        console.log('YYY ' + JSON.stringify(this.state))
     }
+    */
 
     render(): any {
+        return (
+            <>
+                <h1 className="uppercase text-teal-300 py-5">Advice #{this.props.adviceId}</h1>
+                <div className="p-5 text-white font-bold">
+                    &quot;{this.props.message}&quot;
+                </div>
+            </>
+        )
+        /*
         return (
             <>
                 <h1 className="uppercase text-teal-300 py-5">Advice #{this.state.adviceId}</h1>
@@ -31,5 +43,6 @@ export class Advice extends Component<AdviceProps, AdviceState> {
                 </div>
             </>
         )
+        */
     }
 }
