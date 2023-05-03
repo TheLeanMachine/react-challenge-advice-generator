@@ -7,6 +7,8 @@ import { Advice } from '../components/Advice'
 
 export default function AdviceGenerator() {
 
+  
+
   return ( // flex min-h-screen flex-col items-center justify-between p-24 bg-[#1f2631]
     <main style={{ width: '400px', padding: '0 0 50px 0' }} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-0 border-black border-solid">
 

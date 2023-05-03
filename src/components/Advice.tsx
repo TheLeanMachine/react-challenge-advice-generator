@@ -15,9 +15,11 @@ export class Advice extends Component<AdviceProps, AdviceState> {
         super(props);
     }
 
-    // Before the component mounts, we initialise our state
-    componentWillMount() {
-        this.setState(this.props);
+    componentWillMount(): void {
+        this.setState({
+            adviceId: this.props.adviceId,
+            message: this.props.message
+        });
     }
 
     render(): any {
