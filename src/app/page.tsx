@@ -34,13 +34,12 @@ export default function AdviceGenerator() {
     setMessage('Baaar');
   }, 2000);*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     setAdviceId('FoooooYYY');
     setMessage('BaaarYYYYY');
+  }, [adviceId, message]);*/
 
-  }, [adviceId, message]);
-
-  function callApi(): void {
+  useEffect(() => {
     window.fetch('https://api.adviceslip.com/advice')
     .then((response) => {
       if (response.ok) {
@@ -63,13 +62,15 @@ export default function AdviceGenerator() {
   
     })
     .catch((err) => console.log(`Unexpected error fetching an advice from REST API: ${err}`));
-  }
+  }, [adviceId, message]);
+
+  /*function callApi(): void {
+
+  }*/
 
   function handleClick() {
-    callApi();
+    //callApi();
   }
-
-  // {advice.render()}
 
   return (
     <main style={{ width: '400px', padding: '0 0 50px 0' }} className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 border-0 border-black border-solid">
