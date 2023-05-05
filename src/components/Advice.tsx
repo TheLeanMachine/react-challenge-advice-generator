@@ -15,16 +15,6 @@ export class Advice extends Component<AdviceProps, AdviceState> {
         super(props);
     }
 
-    /*
-    componentWillMount(): void {        
-        this.setState({
-            adviceId: this.props.adviceId,
-            message: this.props.message
-        });
-        console.log('YYY ' + JSON.stringify(this.state))
-    }
-    */
-
     render(): any {
         return (
             <>
@@ -34,15 +24,5 @@ export class Advice extends Component<AdviceProps, AdviceState> {
                 </div>
             </>
         )
-        /*
-        return (
-            <>
-                <h1 className="uppercase text-teal-300 py-5">Advice #{this.state.adviceId}</h1>
-                <div className="p-5 text-white font-bold">
-                    &quot;{this.state.message}&quot;
-                </div>
-            </>
-        )
-        */
     }
 }
