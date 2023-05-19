@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { Advice } from '../components/Advice'
 
-function AdviceLoader({ apiJson }) {
+function AdviceRenderer({ apiJson }) {
 
   if (null === apiJson) {
     return (
@@ -22,7 +22,10 @@ export default function AdviceGenerator() {
 
   let [apiJson, setApiJson] = useState(null);
 
-  useEffect(() => {
+  useEffect(loadAndRenderAdvice, []); // intentionally no dependiecies: Only run once!
+
+
+  function loadAndRenderAdvice() {
     window.fetch('https://api.adviceslip.com/advice')
       .then((response) => {
         if (response.ok) {
@@ -31,28 +34,16 @@ export default function AdviceGenerator() {
           response.json()
             .then((adviceFromApi) => {
               console.log(`>>> JSON response body: ${JSON.stringify(adviceFromApi)}`)
-
-              // setApiJson
               setApiJson(adviceFromApi);
             });  
     
         } else {
-          console.log('>>> request failure');
-    
+          console.log('>>> request failure');    
           // TODO: Better error handling - read "Message"-object; see https://api.adviceslip.com/#object-message          
           Promise.reject(`An error occured performing the HTTP request to the REST API. HTTP-status code is '${response.status}', message is '${response.statusText}'.`);
-        }
-    
+        }    
       })
       .catch((err) => console.log(`Unexpected error fetching an advice from REST API: ${err}`));
-  }, []); // intentionally, only run once!
-
-  /*function callApi(): void {
-
-  }*/
-
-  function handleClick() {
-    //callApi();
   }
 
   return (
@@ -60,7 +51,7 @@ export default function AdviceGenerator() {
 
       <div className="rounded-lg bg-[#313a49] text-center border-0 border-white border-solid">
 
-        <AdviceLoader apiJson={apiJson} />
+        <AdviceRenderer apiJson={apiJson} />
 
         <div style={{ padding: '20px 0 60px 0' }} className="border-0 border-white border-solid">
           <Image
@@ -72,7 +63,7 @@ export default function AdviceGenerator() {
         </div>
 
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-26 p-6 rounded-full bg-[#53ffac]">
-          <button onClick={handleClick}>
+          <button onClick={loadAndRenderAdvice}>
             <Image
               src="/images/icon-dice.svg"
               alt="---"
