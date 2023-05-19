@@ -5,7 +5,8 @@ import Image from 'next/image';
 
 import { Advice } from '../components/Advice'
 
-function AdviceRenderer({ apiJson }) {
+
+function AdviceRenderer({ apiJson }: { apiJson: any }) { // eslint-disable-line
 
   if (null === apiJson) {
     return (
