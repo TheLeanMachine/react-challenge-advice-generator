@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 type AdviceProps = {
     adviceId: string,
     message: string
@@ -9,6 +10,7 @@ type AdviceState = {
     adviceId: string,
     message: string
 };
+
 
 export class Advice extends Component<AdviceProps, AdviceState> {
     constructor(props: AdviceProps) {        

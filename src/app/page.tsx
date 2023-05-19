@@ -5,11 +5,22 @@ import Image from 'next/image';
 
 import { Advice } from '../components/Advice'
 
+function AdviceLoader({ apiJson }) {
+
+  if (null === apiJson) {
+    return (
+      <Advice adviceId={'fromAdviceLoader'} message={'adviceMessage'} />
+    )
+  } else {
+    return (
+      <Advice adviceId={apiJson.slip.id} message={apiJson.slip.advice} />
+    )
+  }  
+}
 
 export default function AdviceGenerator() {
 
-  let [adviceId, setAdviceId] = useState('???');
-  let [adviceMessage, setAdviceMessage] = useState('Loading advice from server... - Kai');
+  let [apiJson, setApiJson] = useState(null);
 
   useEffect(() => {
     window.fetch('https://api.adviceslip.com/advice')
@@ -20,9 +31,9 @@ export default function AdviceGenerator() {
           response.json()
             .then((adviceFromApi) => {
               console.log(`>>> JSON response body: ${JSON.stringify(adviceFromApi)}`)
-    
-              setAdviceId(adviceFromApi.slip.id);
-              setAdviceMessage(adviceFromApi.slip.advice);
+
+              // setApiJson
+              setApiJson(adviceFromApi);
             });  
     
         } else {
@@ -34,7 +45,7 @@ export default function AdviceGenerator() {
     
       })
       .catch((err) => console.log(`Unexpected error fetching an advice from REST API: ${err}`));
-  }, [adviceId, adviceMessage]);
+  }, [apiJson]);
 
   /*function callApi(): void {
 
@@ -49,7 +60,7 @@ export default function AdviceGenerator() {
 
       <div className="rounded-lg bg-[#313a49] text-center border-0 border-white border-solid">
 
-        <Advice adviceId={adviceId} message={adviceMessage} />
+        <AdviceLoader apiJson={apiJson} />
 
         <div style={{ padding: '20px 0 60px 0' }} className="border-0 border-white border-solid">
           <Image
