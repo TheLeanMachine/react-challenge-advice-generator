@@ -9,7 +9,7 @@ function AdviceLoader({ apiJson }) {
 
   if (null === apiJson) {
     return (
-      <Advice adviceId={'fromAdviceLoader'} message={'adviceMessage'} />
+      <Advice adviceId={'???'} message={'Loading adivce from REST API...'} />
     )
   } else {
     return (
@@ -45,7 +45,7 @@ export default function AdviceGenerator() {
     
       })
       .catch((err) => console.log(`Unexpected error fetching an advice from REST API: ${err}`));
-  }, [apiJson]);
+  }, []); // intentionally, only run once!
 
   /*function callApi(): void {
 
